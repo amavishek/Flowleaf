@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Startup Company</title>
+<style>
+  :root {
+    --color-primary: #000000;
+    --color-secondary: #6b7280;
+    --color-bg: #f0e8e8;
+    --color-card-bg: #f9fafb;
+    --border-radius: 0.75rem;
+    --transition-speed: 0.3s;
+    --max-width: 1200px;
+    --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-secondary);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    font-size: 18px;
+  }
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  h1 {
+    font-size: 3rem;
+    font-weight: 700;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+  }
+  a:hover,
+  a:focus {
+    color: #3b82f6;
+    outline: none;
+  }
+  main {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1rem 4rem 1rem;
+  }
+  header {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    z-index: 1000;
+    border-bottom: 1px solid #e5e7eb;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+  }
+  nav {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    user-select: none;
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+  .nav-links a {
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.25rem;
+    transition: color var(--transition-speed);
+  }
+  .nav-links a:hover,
+  .nav-links a:focus {
+    color: #3b82f6;
+  }
+  button.cta {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.7rem 1.5rem;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+  }
+  button.cta:hover,
+  button.cta:focus {
+    background-color: #2563eb;
+    outline: none;
+    transform: scale(1.05);
+  }
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  section + section {
+    border-top: 1px solid #e5e7eb;
+  }
+  .about-company,
+  .webinars,
+  .courses,
+  .photos {
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  .company-image-wrapper {
+    margin: 0 auto 2rem auto;
+    max-width: 600px;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  }
+  .company-image-wrapper img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+    gap: 2rem;
+  }
+  .card {
+    background: var(--color-card-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+    transition: box-shadow var(--transition-speed);
+    cursor: default;
+  }
+  .card:hover,
+  .card:focus-within {
+    box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
+  }
+  .card h3 {
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    color: var(--color-primary);
+  }
+  .photos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 1rem;
+  }
+  .photos-grid img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+    transition: transform var(--transition-speed);
+  }
+  .photos-grid img:hover,
+  .photos-grid img:focus {
+    transform: scale(1.05);
+    outline: none;
+  }
+  /* Enroll Section */
+  .enroll-section {
+    text-align: center;
+  }
+  #enroll-button {
+    background-color: var(--color-primary);
+    color: var(--color-bg);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 1rem 2rem;
+    font-weight: 700;
+    font-size: 1.25rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+  }
+  #enroll-button:hover,
+  #enroll-button:focus {
+    background-color: #2563eb;
+    outline: none;
+    transform: scale(1.05);
+  }
+  .enroll-options {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition: opacity var(--transition-speed), transform var(--transition-speed);
+  }
+  .enroll-options.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .enroll-options button {
+    background-color: #3b82f6;
+    color: var(--color-bg);
+    border: none;
+    border-radius: var(--border-radius);
+    padding: 0.75rem 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .enroll-options button:hover,
+  .enroll-options button:focus {
+    background-color: #2563eb;
+    outline: none;
+    transform: scale(1.05);
+  }
+  /* Responsive */
+  @media (max-width: 640px) {
+    h1 {
+      font-size: 2.25rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+    .nav-links {
+      display: none; /* Hide nav on mobile for simplicity */
+    }
+    nav {
+      justify-content: space-between;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav role="navigation" aria-label="Primary Navigation">
+    <div class="logo" tabindex="0">StartupCo</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#webinars">Webinars</a>
+      <a href="#courses">Courses</a>
+      <a href="#enroll-section">Enroll</a>
+    </div>
+  </nav>
+</header>
+<main>
+  <section id="about" class="about-company" tabindex="0" aria-label="About Startup Company">
+    <div class="company-image-wrapper" role="img" aria-label="Company Headquarters Building">
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Company Headquarters Building" />
+    </div>
+    <h1>Welcome to StartupCo</h1>
+    <p>StartupCo is an innovative company pioneering the future of technology and education. Our mission is to empower learners worldwide with cutting-edge online webinars and courses facilitated by industry experts.</p>
+  </section>
+
+  <section id="webinars" class="webinars" tabindex="0" aria-label="Webinars">
+    <h2>Upcoming Webinars</h2>
+    <div class="cards-grid">
+      <article class="card" tabindex="0">
+        <h3>Webinar: Future of AI</h3>
+        <p>Join us for an engaging session on Artificial Intelligence trends and breakthroughs.</p>
+        <p><strong>Date:</strong> July 10, 2024</p>
+      </article>
+      <article class="card" tabindex="0">
+        <h3>Webinar: Web3 Explained</h3>
+        <p>Explore decentralized web technologies and their impact on digital ecosystems.</p>
+        <p><strong>Date:</strong> July 24, 2024</p>
+      </article>
+      <article class="card" tabindex="0">
+        <h3>Webinar: Cloud Computing Basics</h3>
+        <p>Learn the fundamentals of cloud computing and modern infrastructure management.</p>
+        <p><strong>Date:</strong> August 5, 2024</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="courses" class="courses" tabindex="0" aria-label="Courses">
+    <h2>Featured Courses</h2>
+    <div class="cards-grid">
+      <article class="card" tabindex="0">
+        <h3>Course: Introduction to AI</h3>
+        <p>Understand AI concepts, algorithms, and ethical considerations.</p>
+        <p><strong>Duration:</strong> 6 weeks</p>
+      </article>
+      <article class="card" tabindex="0">
+        <h3>Course: Blockchain Fundamentals</h3>
+        <p>Master blockchain concepts and their real-world applications.</p>
+        <p><strong>Duration:</strong> 8 weeks</p>
+      </article>
+      <article class="card" tabindex="0">
+        <h3>Course: JavaScript Essentials</h3>
+        <p>Get hands-on with JavaScript programming and modern frontend development.</p>
+        <p><strong>Duration:</strong> 5 weeks</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="photos" class="photos" tabindex="0" aria-label="Company Photos">
+    <h2>Photo Gallery</h2>
+    <div class="photos-grid" role="list">
+      <img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?auto=format&fit=crop&w=400&q=80" alt="Team collaborating in office" role="listitem" tabindex="0" />
+      <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Modern office space" role="listitem" tabindex="0" />
+      <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Coffee and laptop on desk" role="listitem" tabindex="0" />
+      <img src="https://images.unsplash.com/photo-1522205408450-add114ad53fe?auto=format&fit=crop&w=400&q=80" alt="Team brainstorming session" role="listitem" tabindex="0" />
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=400&q=80" alt="Coding on laptop" role="listitem" tabindex="0" />
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Office reception area" role="listitem" tabindex="0" />
+    </div>
+  </section>
+
+  <section id="enroll-section" class="enroll-section" tabindex="0" aria-label="Enroll Section">
+    <h2>Enroll with StartupCo</h2>
+    <button id="enroll-button" aria-expanded="false" aria-controls="enroll-options" aria-haspopup="true">
+      Enroll
+    </button>
+    <div id="enroll-options" class="enroll-options" role="region" aria-live="polite" aria-hidden="true">
+      <button id="email-me-btn" type="button" aria-label="Email me for enrollment">Email me</button>
+      <button id="whatsapp-dm-btn" type="button" aria-label="Direct message on WhatsApp for enrollment">DM on WhatsApp</button>
+    </div>
+  </section>
+</main>
+
+<script>
+  (function(){
+    const enrollBtn = document.getElementById('enroll-button');
+    const enrollOptions = document.getElementById('enroll-options');
+    const emailBtn = document.getElementById('email-me-btn');
+    const whatsappBtn = document.getElementById('whatsapp-dm-btn');
+
+    enrollBtn.addEventListener('click', () => {
+      const isActive = enrollOptions.classList.toggle('active');
+      enrollBtn.setAttribute('aria-expanded', isActive.toString());
+      enrollOptions.setAttribute('aria-hidden', (!isActive).toString());
+    });
+
+    emailBtn.addEventListener('click', () => {
+      // Open default mail client with prefilled email to enroll@startupco.com
+      const subject = encodeURIComponent('Enrollment Inquiry');
+      const body = encodeURIComponent('Hello,\n\nI am interested in enrolling at StartupCo. Please provide me with more information.\n\nThank you.');
+       window.location.href = `mailto:enroll@startupco.com?subject=${subject}&body=${body}`;
+    });
+
+    whatsappBtn.addEventListener('click', () => {
+      // Open WhatsApp chat to a startup number with prefilled message
+      // Replace '1234567890' with actual country code + number without '+' sign
+      const phone = '1234567890';
+      const text = encodeURIComponent('Hello, I am interested in enrolling at StartupCo. Please provide me with more information.');
+      const url = `https://wa.me/${phone}?text=${text}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+    });
+  })();
+</script>
+</body>
+</html>
